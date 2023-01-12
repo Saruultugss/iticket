@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>タイトル</th>
+        <th>期日</th>
+    </tr>
+    <tr th:each="concert : ${concertList}" th:object="${concert}">
+        <td th:text="*{concertName}"></td>
+        <td th:text="${#temporals.format(concert.date, 'yyyy年MM月dd日')}"></td>
+    </tr>
+</table>
+</body>
+</html>
