@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="h-100">
-	<head th:replace="fragments/head :: head_fragment(title = 'Barren - Simple Online Event Ticketing System')">
+<html lang="jp" class="h-100">
+	<head th:replace="~{fragments/head :: head_fragment(title = 'イベント作成・Iticket')}">
 	</head>
 <body class="d-flex flex-column h-100">
 	<!-- Create Single Ticket Model Start-->
@@ -503,7 +503,7 @@
 	</div>
 	<!-- Create Group Ticket Model End-->
 	<!-- Header Start-->
-	<header th:replace="fragments/header :: header_fragment">
+	<header th:replace="~{fragments/header :: header_fragment}">
 
 	</header>
 	<!-- Header End-->
@@ -1460,13 +1460,13 @@
 	</div>
 	<!-- Body End-->
 	<!-- Footer Start-->
-	<footer th:replace="fragments/footer :: footer_fragment">
+	<footer th:replace="~{fragments/footer :: footer_fragment}">
 
 	</footer>
 	<!-- Footer End-->
 
 
-	<div th:replace="fragments/scripts :: scripts_fragment"></div>
+	<div th:replace="~{fragments/scripts :: scripts_fragment}"></div>
 	<script th:src="@{/vendor/ckeditor5/ckeditor.js}"></script>
 	<script th:src="@{/js/jquery-steps.min.js}"></script>
 	<script th:src="@{/js/datepicker.min.js}"></script>
