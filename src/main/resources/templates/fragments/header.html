@@ -9,7 +9,7 @@
                 </button>
                 <a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.html">
                     <div class="res-main-logo">
-                        <img th:src="@{images/logo-icon.svg}" alt="">
+                        <img th:src="@{/images/logo-icon.svg}" alt="">
                     </div>
                     <div class="main-logo" id="logo">
                         <img th:src="@{/images/logo.svg}" alt="">
@@ -28,9 +28,9 @@
                     <div class="offcanvas-body">
                         <div class="offcanvas-top-area">
                             <div class="create-bg">
-                                <a th:href="@{/concert/create}" class="offcanvas-create-btn">
+                                <a th:href="@{/event/create}" class="offcanvas-create-btn">
                                     <i class="fa-solid fa-calendar-days"></i>
-                                    <span>イベント作成</span>
+                                    <span>イベント開催</span>
                                 </a>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                 <a class="nav-link active" aria-current="page" th:href="@{/}">トップ</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" th:href="@{/concert}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" th:href="@{/event}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     イベント閲覧
                                 </a>
                             </li>
@@ -58,9 +58,9 @@
                 <div class="right-header order-2">
                     <ul class="align-self-stretch">
                         <li sec:authorize="isAuthenticated()">
-                            <a th:href="@{concert/create}" class="create-btn btn-hover">
+                            <a th:href="@{/event/create}" class="create-btn btn-hover">
                                 <i class="fa-solid fa-calendar-days"></i>
-                                <span>イベント作成</span>
+                                <span>イベント開催</span>
                             </a>
                         </li>
                         <li sec:authorize="isAuthenticated()" class="dropdown account-dropdown">

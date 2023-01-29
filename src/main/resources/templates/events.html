@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+	<head th:replace="~{fragments/head :: head_fragment(title = 'イベント検索・一覧・Iticket')}">
+	</head>
+<body class="d-flex flex-column h-100">
+	<!-- Header Start-->
+	<header th:replace="~{fragments/header :: header_fragment}">
+	</header>
+	<!-- Header End-->
+	<!-- Body Start-->
+	<div class="wrapper">
+		<div class="hero-banner">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-xl-8 col-lg-8 col-md-10">
+						<div class="hero-banner-content">
+							<h2>イベントを見つけましょう。</h2>
+							<div class="search-form main-form">
+								<form th:action="@{/event}" th:method="GET" th:object="${eventSearchForm}">
+									<div class="row g-3">
+										<div class="col-lg-5 col-md-12">
+											<div class="form-group search-category">
+												<select class="selectpicker" data-width="100%" data-size="5" th:field="*{online}">
+													<option th:value="${null}" data-icon="fa-solid fa-tower-broadcast" selected>すべて</option>
+													<option value="1" data-icon="fa-solid fa-video">オンラインイベント</option>
+													<option value="0" data-icon="fa-solid fa-location-dot">会場イベント</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-lg-5 col-md-12">
+											<div class="form-group">
+												<select class="selectpicker" data-width="100%" data-size="5" data-live-search="true" th:field="*{category}">
+													<option th:value="${null}" selected>すべて</option>
+													<option value="芸術">芸術</option>
+													<option value="ビジネス">ビジネス</option>
+													<option value="コンサルティング">コンサルティング</option>
+													<option value="教育">教育</option>
+													<option value="ファッション">ファッション</option>
+													<option value="漫才">漫才</option>
+													<option value="公演">公演</option>
+													<option value="スポーツ">スポーツ</option>
+													<option value="その他">その他</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-lg-2 col-md-12">
+											<input type="submit" class="main-btn btn-hover w-100" value="検索" />
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="explore-events p-80">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12">
+						<div class="event-filter-items">
+							<div class="featured-controls">
+								<div class="row">
+									<div th:each="event : ${eventList}" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix">
+										<div class="main-card mt-4">
+											<div class="event-thumbnail">
+												<a th:href="@{/event/{id}/detail(id=${event.id})}" class="thumbnail-img">
+													<img src="images/event-imgs/img-1.jpg" alt="">
+												</a>
+												<span class="bookmark-icon" title="Bookmark"></span>
+											</div>
+											<div class="event-content">
+												<a th:href="@{/event/{id}/detail(id=${event.id})}" class="event-title"><span th:text="${event.eventName}"></span></a>
+												<div class="duration-price-remaining">
+													<span class="duration-price">AUD $100.00*</span>
+													<span class="remaining"></span>
+												</div>
+											</div>
+											<div class="event-footer">
+												<div class="event-timing">
+													<div class="publish-date">
+														<span><i class="fa-solid fa-calendar-day me-2"></i><span th:text="${#temporals.format(event.eventDate, 'MM月dd日')}"></span></span>
+														<span class="dot"><i class="fa-solid fa-circle"></i></span><span th:text="${#temporals.format(event.eventTime, 'HH時mm分')}">3.45 PM</span>
+													</div>
+													<span class="publish-time" th:with="hr=${event.duration / 60},min=${event.duration % 60}">
+														<i class="fa-solid fa-clock me-2"></i>
+														<span th:if="${hr > 0}" th:text="${hr + '時'}"></span>
+														<span th:text="${min + '分間'}"></span>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="browse-btn">
+									<a href="#" class="main-btn btn-hover ">もっとみる</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Body End-->
+	<!-- Footer Start-->
+	<footer th:replace="~{fragments/footer :: footer_fragment}"></footer>
+	<!-- Footer End-->
+	<div th:replace="~{fragments/scripts :: scripts_fragment}"></div>
+	<script>	
+		var containerEl = document.querySelector('[data-ref~="event-filter-content"]');
+
+		var mixer = mixitup(containerEl, {
+			selectors: {
+				target: '[data-ref~="mixitup-target"]'
+			}
+		});
+	</script>
+</body>
+</html>

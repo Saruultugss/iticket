@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ConcertDetail {
+public class EventDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -32,7 +32,7 @@ public class CustomerController {
         customerService.signUp(signUpForm);
         return "customer/sign-in";
     }
-    @PreAuthorize("#id == authentication.principal.customer.id")
+    @PreAuthorize("isAuthenticated() && #id == authentication.principal.customer.id")
     @GetMapping("/customer/{id}/profile")
     public String customerProfile(@PathVariable Long id, Model model) {
         model.addAttribute("customer", customerService.getCustomerById(id));
