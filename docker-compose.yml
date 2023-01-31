@@ -6,6 +6,8 @@ services:
       - "8080:8080"
     environment:
       - spring.datasource.url=jdbc:mysql://mysqldb:3306/iticket?allowPublicKeyRetrieval=true&useSSL=false
+      - spring.datasource.username=iticket
+      - spring.datasource.password=iticket123
     networks:
       - springmysql-net
     depends_on:
