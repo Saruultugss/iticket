@@ -46,15 +46,15 @@ CREATE TABLE IF NOT EXISTS `customer` (
 CREATE TABLE IF NOT EXISTS `customer_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
-  `order_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `order_time` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp,
   `delivery_address` varchar(255) DEFAULT NULL,
-  `delivery_email_address` varchar(255) NOT NULL,
+  `delivery_email_address` varchar(255),
   `preferred_delivery_time` timestamp NULL DEFAULT NULL,
   `time_paid` timestamp NULL DEFAULT NULL,
   `time_sent` timestamp NULL DEFAULT NULL,
-  `total_price` decimal(10,2) NOT NULL,
-  `discount` decimal(10,2) NOT NULL,
-  `final_price` decimal(10,2) NOT NULL,
+  `total_price` decimal(10,2) NULL,
+  `discount` decimal(10,2) NULL,
+  `final_price` decimal(10,2) NULL,
   PRIMARY KEY (`id`),
   KEY `customer_order_customer_ibfk_1` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `serial_number` varchar(255) DEFAULT NULL,
   `event_id` int(11) NOT NULL,
   `ticket_category_id` int(11) NOT NULL,
-  `purchase_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `purchase_date` timestamp NULL,
   PRIMARY KEY (`id`),
   KEY `ticket_concert_ibfk_1` (`event_id`),
   KEY `ticket_ticket_category_ibfk_1` (`ticket_category_id`)

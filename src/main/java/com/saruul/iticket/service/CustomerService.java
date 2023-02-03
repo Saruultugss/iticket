@@ -39,7 +39,6 @@ public class CustomerService implements UserDetailsService {
         if (customer == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        System.out.println("Customer email =====> " + customer.getEmail());
         return new CustomUserDetails(customer);
     }
 }
